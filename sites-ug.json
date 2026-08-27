@@ -1,0 +1,406 @@
+[
+  {
+    "id": "1003",
+    "name": "统一身份认证账号解封",
+    "group": "网络与账号",
+    "url": "https://authserver.xju.edu.cn/authserver/login?service=https%3A%2F%2Fwww.scs.xju.edu.cn%2Fadditional%2Fidentic-auth-apply",
+    "notes": "含分项入口x1；直达:www.scs.xju.edu.cn；电话:0991-8582011",
+    "tier": "low"
+  },
+  {
+    "id": "1052",
+    "name": "人像采集服务",
+    "group": "公共服务",
+    "url": "https://scsphotoweb.xju.edu.cn/additional/homepage/my-photo",
+    "notes": "含分项入口x1；直达:scsphotoweb.xju.edu.cn；电话:0991-8582011"
+  },
+  {
+    "id": "1062",
+    "name": "邮箱密码复位申请",
+    "group": "网络与账号",
+    "url": "https://www.scs.xju.edu.cn/additional/email-reset-pwd/manage",
+    "notes": "直达:www.scs.xju.edu.cn；电话:0991-8582855",
+    "tier": "low"
+  },
+  {
+    "id": "1064",
+    "name": "学生邮箱账号服务",
+    "group": "网络与账号",
+    "url": "https://frsys.xju.edu.cn/webroot/cas/url_email_jh.jsp",
+    "notes": "含分项入口x1；直达:frsys.xju.edu.cn；电话:0991-8582855"
+  },
+  {
+    "id": "1107",
+    "name": "学生社区功能室预约",
+    "group": "学生办事",
+    "url": "https://www.scs.xju.edu.cn/additional/scs/gnsyy/index",
+    "notes": "直达:www.scs.xju.edu.cn；电话:0991-8582355"
+  },
+  {
+    "id": "1115",
+    "name": "学生证补办",
+    "group": "学生办事",
+    "url": "https://authserver.xju.edu.cn/authserver/login?service=https%3A%2F%2Fwww.scs.xju.edu.cn%2Fadditional%2Fxju-custom-service%2Fviews%3Fmicroservice%3Dxju_xszbb",
+    "notes": "含分项入口x2；直达:www.scs.xju.edu.cn；电话:0991-8582858",
+    "tier": "low"
+  },
+  {
+    "id": "1129",
+    "name": "缴费信息查询",
+    "group": "生活服务",
+    "url": "https://frsys.xju.edu.cn/webroot/cas/url_stu_jf_mob.jsp",
+    "notes": "缴费去掌上新大公众号-快捷通道-我要缴费",
+    "tier": "hot"
+  },
+  {
+    "id": "1130",
+    "name": "新生照片提交",
+    "group": "网络与账号",
+    "url": "https://www.scs.xju.edu.cn/additional/form/student-photo-upload",
+    "notes": "含分项入口x1；直达:authserver.xju.edu.cn；电话:0991-8582011"
+  },
+  {
+    "id": "1135",
+    "name": "勤工助学岗位申请",
+    "group": "学生办事",
+    "url": "https://xdxg.xju.edu.cn:9000/JC/OneLogin.aspx?Type=3",
+    "notes": "直达:xdxg.xju.edu.cn:9000；电话:0991-8585095"
+  },
+  {
+    "id": "1137",
+    "name": "学生寒暑假去向登记",
+    "group": "学生办事",
+    "url": "https://xdxg.xju.edu.cn:9000/JC/OneLogin.aspx?Type=4",
+    "notes": "SSO链路；电话:0991-8586226"
+  },
+  {
+    "id": "1138",
+    "name": "宿舍报修",
+    "group": "学生办事",
+    "url": "https://xdxg.xju.edu.cn:9000/JC/OneLogin.aspx?Type=2",
+    "notes": "直达:xdxg.xju.edu.cn:9000；电话:0991-8582355"
+  },
+  {
+    "id": "1153",
+    "name": "学宿费电子票据服务",
+    "group": "生活服务",
+    "url": "https://authserver.xju.edu.cn/authserver/login?service=https%3A%2F%2Fwww.scs.xju.edu.cn%2Fadditional%2Fform%2Fnonbilltaxquery",
+    "notes": "含分项入口x1；直达:www.scs.xju.edu.cn；电话:0991-8582939（出纳科）",
+    "tier": "low"
+  },
+  {
+    "id": "1181",
+    "name": "学生请假",
+    "group": "学生办事",
+    "url": "https://xdxg.xju.edu.cn:9000/JC/OneLogin.aspx?Type=5",
+    "notes": "含分项入口x1；直达:xdxg.xju.edu.cn:9000；电话:0991-8586226",
+    "tier": "hot"
+  },
+  {
+    "id": "1242",
+    "name": "图书馆座位/研讨间预约",
+    "group": "公共服务",
+    "url": "https://iclib.xju.edu.cn/",
+    "notes": "直达:iclib.xju.edu.cn；电话:0991-8582062",
+    "tier": "hot"
+  },
+  {
+    "id": "1246",
+    "name": "实名上网认证账号密码复位",
+    "group": "网络与账号",
+    "url": "https://www.scs.xju.edu.cn/additional/identification-net-reset-pwd/manage",
+    "notes": "直达:www.scs.xju.edu.cn；电话:0991-8582855",
+    "tier": "low"
+  },
+  {
+    "id": "1247",
+    "name": "网络教学综合平台密码复位申请",
+    "group": "网络与账号",
+    "url": "https://ehall.xju.edu.cn/gemini/sys/JYZX/index.do",
+    "notes": "SSO链路；电话:0991-8580470",
+    "tier": "low"
+  },
+  {
+    "id": "1300",
+    "name": "填报中心",
+    "group": "学生办事",
+    "url": "https://ot.xju.edu.cn/writeCenter",
+    "notes": "SSO链路"
+  },
+  {
+    "id": "1303",
+    "name": "三方协议签署",
+    "group": "公共服务",
+    "url": "https://sign.xju.edu.cn/ecapi/sso/openapi/v1/login?moduleId=6",
+    "notes": "直达:sign.xju.edu.cn",
+    "tier": "low"
+  },
+  {
+    "id": "1314",
+    "name": "知识与帮助",
+    "group": "公共服务",
+    "url": "https://ehall.xju.edu.cn/psfw/sys/tzggapp/*default/index.do",
+    "notes": "直达:ehall.xju.edu.cn",
+    "tier": "low"
+  },
+  {
+    "id": "1321",
+    "name": "奖学金申请",
+    "group": "学生办事",
+    "url": "https://xdxg.xju.edu.cn:9000/JC/OneLogin.aspx?Type=7",
+    "notes": "直达:xdxg.xju.edu.cn:9000"
+  },
+  {
+    "id": "1342",
+    "name": "问卷调查",
+    "group": "公共服务",
+    "url": "https://xdxg.xju.edu.cn:9000/JC/OneLogin.aspx?Type=9",
+    "notes": "直达:xdxg.xju.edu.cn:9000"
+  },
+  {
+    "id": "1347",
+    "name": "助学金申请",
+    "group": "学生办事",
+    "url": "https://xdxg.xju.edu.cn:9000/JC/OneLogin.aspx?Type=8",
+    "notes": "SSO链路"
+  },
+  {
+    "id": "1414",
+    "name": "就业系统",
+    "group": "学生办事",
+    "url": "https://job.xju.edu.cn/JC/OneLogin.aspx",
+    "notes": "直达:job.xju.edu.cn"
+  },
+  {
+    "id": "1402",
+    "name": "学工系统",
+    "group": "学生办事",
+    "url": "https://xdxg.xju.edu.cn:9000/JC/OneLogin.aspx",
+    "notes": "SSO链路；直达学工系统(免办事大厅二次点击)",
+    "tier": "hot"
+  },
+  {
+    "id": "1415",
+    "name": "团委系统",
+    "group": "学生办事",
+    "url": "https://xdtw.xju.edu.cn/JC/OneLogin.aspx",
+    "notes": "直达:xdtw.xju.edu.cn"
+  },
+  {
+    "id": "1416",
+    "name": "离校系统",
+    "group": "学生办事",
+    "url": "https://xdxglx.xju.edu.cn/JC/OneLogin.aspx",
+    "notes": "直达:xdxglx.xju.edu.cn"
+  },
+  {
+    "id": "1417",
+    "name": "三进两联一交友系统",
+    "group": "学生办事",
+    "url": "https://321.xju.edu.cn/JC/OneLogin.aspx",
+    "notes": "SSO链路；直达:xdxg.xju.edu.cn:9000",
+    "tier": "low"
+  },
+  {
+    "id": "1418",
+    "name": "创新创业",
+    "group": "学生办事",
+    "url": "https://cy.xju.edu.cn/JC/OneLogin.aspx",
+    "notes": "直达:cy.xju.edu.cn"
+  },
+  {
+    "id": "1419",
+    "name": "心理健康服务平台",
+    "group": "学生办事",
+    "url": "https://xljk.xju.edu.cn/sso/caslogin.do",
+    "notes": "直达:xljk.xju.edu.cn；首次进入需填个人补录表单(家庭氛围/家庭结构等心理健康档案字段)",
+    "tier": "hot"
+  },
+  {
+    "id": "1420",
+    "name": "大型仪器设备共享平台",
+    "group": "学术科研",
+    "url": "https://yqgx.xju.edu.cn/",
+    "notes": "SSO链路；直达:321.xju.edu.cn"
+  },
+  {
+    "id": "1421",
+    "name": "实验室安全管理系统",
+    "group": "学术科研",
+    "url": "http://sysgl.xju.edu.cn/caslogin.aspx",
+    "notes": "HTTP老系统+SSO落地空页,疑似仅校内网"
+  },
+  {
+    "id": "1423",
+    "name": "校园一卡通系统",
+    "group": "生活服务",
+    "url": "https://newcard.xju.edu.cn/servicehall/casClient/login",
+    "notes": "直达:newcard.xju.edu.cn",
+    "tier": "hot"
+  },
+  {
+    "id": "1425",
+    "name": "红湖支付平台",
+    "group": "生活服务",
+    "url": "https://pay.xju.edu.cn/casLogin",
+    "notes": "SSO链路；直达:yqgx.xju.edu.cn"
+  },
+  {
+    "id": "1393",
+    "name": "华住商旅平台",
+    "group": "生活服务",
+    "url": "https://authserver.xju.edu.cn/authserver/login?service=https%3A%2F%2Fh5.scs.xju.edu.cn%2Fpages%2Fadditional%2Fscs%2Fhuazhu%2Findex",
+    "notes": "直达:htravel.huazhu.com",
+    "tier": "low"
+  },
+  {
+    "id": "1433",
+    "name": "CARSI应用资源",
+    "group": "学术科研",
+    "url": "https://ds.carsi.edu.cn",
+    "notes": "直达:ds.carsi.edu.cn"
+  },
+  {
+    "id": "1443",
+    "name": "校园网络测速(宿舍区)",
+    "group": "网络与账号",
+    "url": "http://202.201.253.77/",
+    "notes": "直达:ehall.xju.edu.cn；电话:0991-8582855；需在宿舍区网络访问(202.201.253.77)",
+    "tier": "low"
+  },
+  {
+    "id": "1465",
+    "name": "同心智思大中小一体化智慧教学平台",
+    "group": "教学培养",
+    "url": "https://lms.xju.edu.cn",
+    "notes": "直达:ai.xju.edu.cn；疑似仅校内网/本机连接超时",
+    "tier": "low"
+  },
+  {
+    "id": "1469",
+    "name": "学生一张表",
+    "group": "学生办事",
+    "url": "https://ot.xju.edu.cn/",
+    "notes": "SSO链路；直达学生一张表(免办事大厅二次点击)",
+    "tier": "hot"
+  },
+  {
+    "id": "1470",
+    "name": "党员结业证书管理",
+    "group": "公共服务",
+    "url": "https://authserver.xju.edu.cn/authserver/login?service=https%3A%2F%2Fwww.scs.xju.edu.cn%2Fadditional%2Fscs%2Fjyzs%2Findex",
+    "notes": "直达:ehall.xju.edu.cn",
+    "tier": "low"
+  },
+  {
+    "id": "1475",
+    "name": "新疆大学网络教学综合平台",
+    "group": "教学培养",
+    "url": "https://edu.xju.edu.cn/meol/homepage/common/sso_login.jsp",
+    "notes": "直达:www.scs.xju.edu.cn"
+  },
+  {
+    "id": "1484",
+    "name": "宿舍调换申请",
+    "group": "学生办事",
+    "url": "https://xdxg.xju.edu.cn:9000/JC/OneLogin.aspx?Type=1",
+    "notes": "直达:xdxg.xju.edu.cn:9000"
+  },
+  {
+    "id": "1498",
+    "name": "国际学术资源访问服务账号申请",
+    "group": "学术科研",
+    "url": "https://authserver.xju.edu.cn/authserver/login?service=https%3A%2F%2Fscs2.xju.edu.cn%2Fcustom-form%2F2031235546375704576%3F_mpcc_%3DStuAcademicDatabases",
+    "notes": "含分项入口x1；直达:ehall.xju.edu.cn；电话:0991-8582855"
+  },
+  {
+    "id": "1272",
+    "name": "校历",
+    "group": "公共服务",
+    "url": "https://ehall.xju.edu.cn/new/portal/custom/img/logo/xiaoli.html",
+    "notes": "官方校历页(图片);截至2026-08仍为2025-2026学年,待学校更新",
+    "tier": "hot"
+  },
+  {
+    "id": "1192",
+    "name": "本科生选课",
+    "group": "教学培养",
+    "url": "https://jwxt.xju.edu.cn/xjdxjw/caslogin?url=student/wsxk.zx.html",
+    "notes": "直达:jwxt.xju.edu.cn；疑似仅校内网；选课开放期系统拥堵请耐心",
+    "tier": "hot"
+  },
+  {
+    "id": "1180",
+    "name": "本科生成绩查询",
+    "group": "教学培养",
+    "url": "https://jwxt.xju.edu.cn/xjdxjw/caslogin?url=h5/index.html#/pages/home/jwlogin?mode=singlePage&fwm=jw/subPages&typecode=cjcx",
+    "notes": "直达:jwxt.xju.edu.cn；疑似仅校内网",
+    "tier": "hot"
+  },
+  {
+    "id": "1203",
+    "name": "本科生课表查询",
+    "group": "教学培养",
+    "url": "https://jwxt.xju.edu.cn/xjdxjw/pageXfer.jsp?url=student/xkjg.wdkb.jsp",
+    "notes": "直达:jwxt.xju.edu.cn；疑似仅校内网",
+    "tier": "hot"
+  },
+  {
+    "id": "1120",
+    "name": "本科生空闲教室查询",
+    "group": "教学培养",
+    "url": "https://jwxt.xju.edu.cn/xjdxjw/caslogin?url=h5/index.html#/pages/home/jwlogin?mode=singlePage&fwm=jw/subPages&typecode=topic&postion=ksapp",
+    "notes": "直达:jwxt.xju.edu.cn；疑似仅校内网；考试周找自习室用"
+  },
+  {
+    "id": "1121",
+    "name": "本科生校内考试安排",
+    "group": "教学培养",
+    "url": "https://jwxt.xju.edu.cn/xjdxjw/caslogin?url=h5/index.html#/pages/home/jwlogin?mode=singlePage&fwm=jw/subPages&typecode=ksap",
+    "notes": "直达:jwxt.xju.edu.cn；疑似仅校内网"
+  },
+  {
+    "id": "1178",
+    "name": "本科生注册申请",
+    "group": "教学培养",
+    "url": "https://jwxt.xju.edu.cn/xjdxjw/caslogin?url=student/stu.xsxj.xjda.sqzc.html",
+    "notes": "直达:jwxt.xju.edu.cn；疑似仅校内网；开学报到注册时使用",
+    "tier": "low"
+  },
+  {
+    "id": "1191",
+    "name": "本科生选课结果查询",
+    "group": "教学培养",
+    "url": "https://jwxt.xju.edu.cn/xjdxjw/caslogin?url=student/wsxk.zxjg.jsp",
+    "notes": "直达:jwxt.xju.edu.cn；疑似仅校内网"
+  },
+  {
+    "id": "1195",
+    "name": "本科生缓考申请",
+    "group": "教学培养",
+    "url": "https://jwxt.xju.edu.cn/xjdxjw/caslogin?url=student/ksap.sqhk.html",
+    "notes": "直达:jwxt.xju.edu.cn；疑似仅校内网；期末考试前因病等申请",
+    "tier": "low"
+  },
+  {
+    "id": "1213",
+    "name": "本科生结对老师信息查询",
+    "group": "学生办事",
+    "url": "https://jwxt.xju.edu.cn/xjdxjw/caslogin",
+    "notes": "登录本科教务系统后查询；疑似仅校内网"
+  },
+  {
+    "id": "1294",
+    "name": "本科生在读证明",
+    "group": "学生办事",
+    "url": "https://signc.xju.edu.cn/trustedEcertPC/eVoucher/campus/redirectCAS?serviceNameEn=bkszdzm",
+    "notes": "直达:signc.xju.edu.cn；电子签章证明"
+  },
+  {
+    "id": "1296",
+    "name": "本科生学籍证明",
+    "group": "学生办事",
+    "url": "https://signc.xju.edu.cn/trustedEcertPC/eVoucher/campus/redirectCAS?serviceNameEn=bksxjzm",
+    "notes": "直达:signc.xju.edu.cn；电子签章证明"
+  }
+]
