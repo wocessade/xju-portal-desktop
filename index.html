@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>新大研究生办事大厅 · 转接桌面</title>
+<style>
+  :root {
+    --bg: #f5f6f8;
+    --card: #ffffff;
+    --border: #e3e6ea;
+    --text: #1f2329;
+    --text-2: #5a6068;
+    --text-3: #8a9099;
+    --accent: #2f6fed;
+    --accent-soft: #eaf1fe;
+    --radius: 10px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+  }
+  .topbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .topbar h1 {
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+  .search-wrap {
+    margin-left: auto;
+    flex: 1 1 280px;
+    max-width: 440px;
+  }
+  #search {
+    width: 100%;
+    padding: 9px 14px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    outline: none;
+    transition: border-color .15s, box-shadow .15s, background .15s;
+  }
+  #search::placeholder { color: var(--text-3); }
+  #search:focus {
+    background: var(--card);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .stats {
+    font-size: 13px;
+    color: var(--text-3);
+    margin-bottom: 14px;
+  }
+  section.group { margin-bottom: 26px; }
+  .group-title {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-2);
+    margin-bottom: 10px;
+  }
+  .group-title .count {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-3);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+    gap: 12px;
+  }
+  .tile {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px 12px;
+    cursor: pointer;
+    transition: border-color .15s, box-shadow .15s, transform .15s;
+  }
+  .tile:hover, .tile:focus-visible {
+    border-color: var(--accent);
+    box-shadow: 0 2px 10px rgba(31, 35, 41, 0.08);
+    transform: translateY(-1px);
+  }
+  .tile:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .tile .name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .tile .note {
+    font-size: 12px;
+    color: var(--text-3);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .empty {
+    padding: 48px 16px;
+    text-align: center;
+    color: var(--text-3);
+    font-size: 14px;
+  }
+  .foot {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8px 20px 28px;
+    font-size: 12px;
+    color: var(--text-3);
+  }
+  .usage {
+    background: var(--accent-soft);
+    border: 1px solid #d6e4fb;
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    font-size: 13.5px;
+  }
+  .usage summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--accent);
+    user-select: none;
+  }
+  .usage ol { margin: 8px 0 0 18px; }
+  .usage li { margin: 3px 0; color: var(--text-2); }
+  .hot-tile {
+    border-color: #c7d9fb;
+    background: #fbfdff;
+    border-left: 3px solid var(--accent);
+  }
+  .lowbox {
+    margin-bottom: 26px;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius);
+    padding: 10px 14px 12px;
+  }
+  .lowbox > summary {
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--text-2);
+    user-select: none;
+  }
+  .lowbox .grid { margin-top: 10px; }
+  @media (max-width: 640px) {
+    .topbar-inner { padding: 12px 16px; gap: 10px; }
+    .topbar h1 { font-size: 16px; }
+    .search-wrap { margin-left: 0; max-width: none; flex-basis: 100%; }
+    main { padding: 16px; }
+    .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+    .tile { padding: 12px 14px 10px; }
+  }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <h1>新大研究生办事大厅 · 转接桌面</h1>
+    <div class="search-wrap">
+      <input id="search" type="search" placeholder="搜索办事入口，如：缴费、成绩、选课…" autocomplete="off">
+    </div>
+  </div>
+</header>
+<main>
+  <details class="usage" open>
+    <summary>使用说明（新同学先看）</summary>
+    <ol>
+      <li>本页是<strong>公共目录页</strong>：不收集、不传输、不存储任何账号密码，也没有登录框——请不要在本页输入任何密码。</li>
+      <li>点击磁贴会新窗口打开<strong>对应官方系统</strong>；首次进入请用<strong>你自己的学号密码</strong>登录（各系统分别登录一次，浏览器记住登录态后免重复）。</li>
+      <li>卡片小字是入口提示：个别系统仅校内网/宿舍区网络可访问（标注「疑似仅校内网」「需在宿舍区网络」）；带「首次进入需填…」的是系统要求的信息补录。</li>
+      <li>页面分三层：<strong>★常用</strong> 置顶、常规分组居中、<strong>折叠低频</strong>（密码复位/应急类）收在页尾；搜索会搜全部三层。</li>
+      <li>无在线直链的窗口类事项见同目录《线下办理指引.md》（含咨询电话与门户详情链接）。</li>
+      <li>入口数据抓自官方服务目录（2026-08-28），学校系统变更以官方为准。</li>
+    </ol>
+  </details>
+  <div class="stats" id="stats"></div>
+  <div id="board"></div>
+  <div class="empty" id="empty" hidden>暂无匹配的办事入口，换个关键词试试</div>
+</main>
+<div class="foot">点击磁贴在新窗口打开官方入口 · 公共版（无账号密码收集） · 数据 2026-08-28</div>
+
+<script>
+const SITES = [
+ {
+  "id": "1003",
+  "name": "统一身份认证账号解封",
+  "group": "网络与账号",
+  "url": "https://authserver.xju.edu.cn/authserver/login?service=https%3A%2F%2Fwww.scs.xju.edu.cn%2Fadditional%2Fidentic-auth-apply",
+  "notes": "含分项入口x1；直达:www.scs.xju.edu.cn；电话:0991-8582011",
+  "tier": "low"
+ },
+ {
+  "id": "1052",
+  "name": "人像采集服务",
+  "group": "公共服务",
+  "url": "https://scsphotoweb.xju.edu.cn/additional/homepage/my-photo",
+  "notes": "含分项入口x1；直达:scsphotoweb.xju.edu.cn；电话:0991-8582011"
+ },
+ {
+  "id": "1062",
+  "name": "邮箱密码复位申请",
+  "group": "网络与账号",
+  "url": "https://www.scs.xju.edu.cn/additional/email-reset-pwd/manage",
+  "notes": "直达:www.scs.xju.edu.cn；电话:0991-8582855",
+  "tier": "low"
+ },
+ {
+  "id": "1064",
+  "name": "学生邮箱账号服务",
+  "group": "网络与账号",
+  "url": "https://frsys.xju.edu.cn/webroot/cas/url_email_jh.jsp",
+  "notes": "含分项入口x1；直达:frsys.xju.edu.cn；电话:0991-8582855"
+ },
+ {
+  "id": "1107",
+  "name": "学生社区功能室预约",
+  "group": "学生办事",
+  "url": "https://www.scs.xju.edu.cn/additional/scs/gnsyy/index",
+  "notes": "直达:www.scs.xju.edu.cn；电话:0991-8582355"
+ },
+ {
+  "id": "1115",
+  "name": "学生证补办",
+  "group": "学生办事",
+  "url": "https://authserver.xju.edu.cn/authserver/login?service=https%3A%2F%2Fwww.scs.xju.edu.cn%2Fadditional%2Fxju-custom-service%2Fviews%3Fmicroservice%3Dxju_xszbb",
+  "notes": "含分项入口x2；直达:www.scs.xju.edu.cn；电话:0991-8582858",
+  "tier": "low"
+ },
+ {
+  "id": "1129",
+  "name": "缴费信息查询",
+  "group": "生活服务",
+  "url": "https://frsys.xju.edu.cn/webroot/cas/url_stu_jf_mob.jsp",
+  "notes": "缴费去掌上新大公众号-快捷通道-我要缴费",
+  "tier": "hot"
+ },
+ {
+  "id": "1130",
+  "name": "新生照片提交",
+  "group": "网络与账号",
+  "url": "https://www.scs.xju.edu.cn/additional/form/student-photo-upload",
+  "notes": "含分项入口x1；直达:authserver.xju.edu.cn；电话:0991-8582011"
+ },
+ {
+  "id": "1135",
+  "name": "勤工助学岗位申请",
+  "group": "学生办事",
+  "url": "https://xdxg.xju.edu.cn:9000/JC/OneLogin.aspx?Type=3",
+  "notes": "直达:xdxg.xju.edu.cn:9000；电话:0991-8585095"
+ },
+ {
+  "id": "1137",
+  "name": "学生寒暑假去向登记",
+  "group": "学生办事",
+  "url": "https://xdxg.xju.edu.cn:9000/JC/OneLogin.aspx?Type=4",
+  "notes": "SSO链路；电话:0991-8586226"
+ },
+ {
+  "id": "1138",
+  "name": "宿舍报修",
+  "group": "学生办事",
+  "url": "https://xdxg.xju.edu.cn:9000/JC/OneLogin.aspx?Type=2",
+  "notes": "直达:xdxg.xju.edu.cn:9000；电话:0991-8582355"
+ },
+ {
+  "id": "1153",
+  "name": "学宿费电子票据服务",
+  "group": "生活服务",
+  "url": "https://authserver.xju.edu.cn/authserver/login?service=https%3A%2F%2Fwww.scs.xju.edu.cn%2Fadditional%2Fform%2Fnonbilltaxquery",
+  "notes": "含分项入口x1；直达:www.scs.xju.edu.cn；电话:0991-8582939（出纳科）",
+  "tier": "low"
+ },
+ {
+  "id": "1181",
+  "name": "学生请假",
+  "group": "学生办事",
+  "url": "https://xdxg.xju.edu.cn:9000/JC/OneLogin.aspx?Type=5",
+  "notes": "含分项入口x1；直达:xdxg.xju.edu.cn:9000；电话:0991-8586226",
+  "tier": "hot"
+ },
+ {
+  "id": "1242",
+  "name": "图书馆座位/研讨间预约",
+  "group": "公共服务",
+  "url": "https://iclib.xju.edu.cn/",
+  "notes": "直达:iclib.xju.edu.cn；电话:0991-8582062",
+  "tier": "hot"
+ },
+ {
+  "id": "1246",
+  "name": "实名上网认证账号密码复位",
+  "group": "网络与账号",
+  "url": "https://www.scs.xju.edu.cn/additional/identification-net-reset-pwd/manage",
+  "notes": "直达:www.scs.xju.edu.cn；电话:0991-8582855",
+  "tier": "low"
+ },
+ {
+  "id": "1247",
+  "name": "网络教学综合平台密码复位申请",
+  "group": "网络与账号",
+  "url": "https://ehall.xju.edu.cn/gemini/sys/JYZX/index.do",
+  "notes": "SSO链路；电话:0991-8580470",
+  "tier": "low"
+ },
+ {
+  "id": "1254",
+  "name": "研究生培养方案查询",
+  "group": "教学培养",
+  "url": "https://yjspy.xju.edu.cn/Open/PyfaList.aspx",
+  "notes": "直达:yjspy.xju.edu.cn；电话:0991-8585357",
+  "tier": "hot"
+ },
+ {
+  "id": "1255",
+  "name": "研究生调停补课查询",
+  "group": "教学培养",
+  "url": "https://yjspy.xju.edu.cn/Open/Lesson_TTBView.aspx",
+  "notes": "直达:yjspy.xju.edu.cn；电话:0991-8585357",
+  "tier": "low"
+ },
+ {
+  "id": "1300",
+  "name": "填报中心",
+  "group": "学生办事",
+  "url": "https://ot.xju.edu.cn/writeCenter",
+  "notes": "SSO链路"
+ },
+ {
+  "id": "1303",
+  "name": "三方协议签署",
+  "group": "公共服务",
+  "url": "https://sign.xju.edu.cn/ecapi/sso/openapi/v1/login?moduleId=6",
+  "notes": "直达:sign.xju.edu.cn",
+  "tier": "low"
+ },
+ {
+  "id": "1314",
+  "name": "知识与帮助",
+  "group": "公共服务",
+  "url": "https://ehall.xju.edu.cn/psfw/sys/tzggapp/*default/index.do",
+  "notes": "直达:ehall.xju.edu.cn",
+  "tier": "low"
+ },
+ {
+  "id": "1321",
+  "name": "奖学金申请",
+  "group": "学生办事",
+  "url": "https://xdxg.xju.edu.cn:9000/JC/OneLogin.aspx?Type=7",
+  "notes": "直达:xdxg.xju.edu.cn:9000"
+ },
+ {
+  "id": "1342",
+  "name": "问卷调查",
+  "group": "公共服务",
+  "url": "https://xdxg.xju.edu.cn:9000/JC/OneLogin.aspx?Type=9",
+  "notes": "直达:xdxg.xju.edu.cn:9000"
+ },
+ {
+  "id": "1347",
+  "name": "助学金申请",
+  "group": "学生办事",
+  "url": "https://xdxg.xju.edu.cn:9000/JC/OneLogin.aspx?Type=8",
+  "notes": "SSO链路"
+ },
+ {
+  "id": "1414",
+  "name": "就业系统",
+  "group": "学生办事",
+  "url": "https://job.xju.edu.cn/JC/OneLogin.aspx",
+  "notes": "直达:job.xju.edu.cn"
+ },
+ {
+  "id": "1402",
+  "name": "学工系统",
+  "group": "学生办事",
+  "url": "https://xdxg.xju.edu.cn:9000/JC/OneLogin.aspx",
+  "notes": "SSO链路；直达学工系统(免办事大厅二次点击)",
+  "tier": "hot"
+ },
+ {
+  "id": "1415",
+  "name": "团委系统",
+  "group": "学生办事",
+  "url": "https://xdtw.xju.edu.cn/JC/OneLogin.aspx",
+  "notes": "直达:xdtw.xju.edu.cn"
+ },
+ {
+  "id": "1416",
+  "name": "离校系统",
+  "group": "学生办事",
+  "url": "https://xdxglx.xju.edu.cn/JC/OneLogin.aspx",
+  "notes": "直达:xdxglx.xju.edu.cn"
+ },
+ {
+  "id": "1417",
+  "name": "三进两联一交友系统",
+  "group": "学生办事",
+  "url": "https://321.xju.edu.cn/JC/OneLogin.aspx",
+  "notes": "SSO链路；直达:xdxg.xju.edu.cn:9000",
+  "tier": "low"
+ },
+ {
+  "id": "1418",
+  "name": "创新创业",
+  "group": "学生办事",
+  "url": "https://cy.xju.edu.cn/JC/OneLogin.aspx",
+  "notes": "直达:cy.xju.edu.cn"
+ },
+ {
+  "id": "1419",
+  "name": "心理健康服务平台",
+  "group": "学生办事",
+  "url": "https://xljk.xju.edu.cn/sso/caslogin.do",
+  "notes": "直达:xljk.xju.edu.cn；首次进入需填个人补录表单(家庭氛围/家庭结构等心理健康档案字段)",
+  "tier": "hot"
+ },
+ {
+  "id": "1420",
+  "name": "大型仪器设备共享平台",
+  "group": "学术科研",
+  "url": "https://yqgx.xju.edu.cn/",
+  "notes": "SSO链路；直达:321.xju.edu.cn"
+ },
+ {
+  "id": "1421",
+  "name": "实验室安全管理系统",
+  "group": "学术科研",
+  "url": "http://sysgl.xju.edu.cn/caslogin.aspx",
+  "notes": "HTTP老系统+SSO落地空页,疑似仅校内网"
+ },
+ {
+  "id": "1423",
+  "name": "校园一卡通系统",
+  "group": "生活服务",
+  "url": "https://newcard.xju.edu.cn/servicehall/casClient/login",
+  "notes": "直达:newcard.xju.edu.cn",
+  "tier": "hot"
+ },
+ {
+  "id": "1425",
+  "name": "红湖支付平台",
+  "group": "生活服务",
+  "url": "https://pay.xju.edu.cn/casLogin",
+  "notes": "SSO链路；直达:yqgx.xju.edu.cn"
+ },
+ {
+  "id": "1430",
+  "name": "研究生培养管理系统",
+  "group": "教学培养",
+  "url": "https://yjspy.xju.edu.cn/ULogin.aspx",
+  "notes": "直达:yjspy.xju.edu.cn",
+  "tier": "hot"
+ },
+ {
+  "id": "1393",
+  "name": "华住商旅平台",
+  "group": "生活服务",
+  "url": "https://authserver.xju.edu.cn/authserver/login?service=https%3A%2F%2Fh5.scs.xju.edu.cn%2Fpages%2Fadditional%2Fscs%2Fhuazhu%2Findex",
+  "notes": "直达:htravel.huazhu.com",
+  "tier": "low"
+ },
+ {
+  "id": "1389",
+  "name": "研究生评教管理系统",
+  "group": "教学培养",
+  "url": "https://yjsxju.mycospxk.com",
+  "notes": "SSO链路；直达:cgxt.xju.edu.cn"
+ },
+ {
+  "id": "1387",
+  "name": "学位论文管理系统",
+  "group": "教学培养",
+  "url": "https://xwlw.xju.edu.cn/cas-xju/xju/login",
+  "notes": "校外访问超时,疑似仅校内网；疑似仅校内网/本机连接超时;在校内网络重试",
+  "tier": "low"
+ },
+ {
+  "id": "1433",
+  "name": "CARSI应用资源",
+  "group": "学术科研",
+  "url": "https://ds.carsi.edu.cn",
+  "notes": "直达:ds.carsi.edu.cn"
+ },
+ {
+  "id": "1443",
+  "name": "校园网络测速(宿舍区)",
+  "group": "网络与账号",
+  "url": "http://202.201.253.77/",
+  "notes": "直达:ehall.xju.edu.cn；电话:0991-8582855；需在宿舍区网络访问(202.201.253.77)",
+  "tier": "low"
+ },
+ {
+  "id": "1465",
+  "name": "同心智思大中小一体化智慧教学平台",
+  "group": "教学培养",
+  "url": "https://lms.xju.edu.cn",
+  "notes": "直达:ai.xju.edu.cn；疑似仅校内网/本机连接超时",
+  "tier": "low"
+ },
+ {
+  "id": "1469",
+  "name": "学生一张表",
+  "group": "学生办事",
+  "url": "https://ot.xju.edu.cn/",
+  "notes": "SSO链路；直达学生一张表(免办事大厅二次点击)",
+  "tier": "hot"
+ },
+ {
+  "id": "1470",
+  "name": "党员结业证书管理",
+  "group": "公共服务",
+  "url": "https://authserver.xju.edu.cn/authserver/login?service=https%3A%2F%2Fwww.scs.xju.edu.cn%2Fadditional%2Fscs%2Fjyzs%2Findex",
+  "notes": "直达:ehall.xju.edu.cn",
+  "tier": "low"
+ },
+ {
+  "id": "1475",
+  "name": "新疆大学网络教学综合平台",
+  "group": "教学培养",
+  "url": "https://edu.xju.edu.cn/meol/homepage/common/sso_login.jsp",
+  "notes": "直达:www.scs.xju.edu.cn"
+ },
+ {
+  "id": "1484",
+  "name": "宿舍调换申请",
+  "group": "学生办事",
+  "url": "https://xdxg.xju.edu.cn:9000/JC/OneLogin.aspx?Type=1",
+  "notes": "直达:xdxg.xju.edu.cn:9000"
+ },
+ {
+  "id": "1498",
+  "name": "国际学术资源访问服务账号申请",
+  "group": "学术科研",
+  "url": "https://authserver.xju.edu.cn/authserver/login?service=https%3A%2F%2Fscs2.xju.edu.cn%2Fcustom-form%2F2031235546375704576%3F_mpcc_%3DStuAcademicDatabases",
+  "notes": "含分项入口x1；直达:ehall.xju.edu.cn；电话:0991-8582855"
+ },
+ {
+  "id": "1272",
+  "name": "校历",
+  "group": "公共服务",
+  "url": "https://ehall.xju.edu.cn/new/portal/custom/img/logo/xiaoli.html",
+  "notes": "官方校历页(图片);截至2026-08仍为2025-2026学年,待学校更新",
+  "tier": "hot"
+ }
+];
+</script>
+<script>
+(function () {
+  var board = document.getElementById('board');
+  var stats = document.getElementById('stats');
+  var emptyBox = document.getElementById('empty');
+  var input = document.getElementById('search');
+  var groups = [];
+  var byGroup = {};
+  var hot = [];
+  var low = [];
+
+  function match(item, q) {
+    return (item.name || '').toLowerCase().indexOf(q) !== -1 ||
+           (item.notes || '').toLowerCase().indexOf(q) !== -1;
+  }
+
+  function cleanNotes(n) {
+    return String(n == null ? '' : n)
+      .replace(/；\s*直达[:：][^；]*/g, '')
+      .replace(/^直达[:：]\s*/, '')
+      .trim();
+  }
+
+  function buildIndex() {
+    groups = [];
+    byGroup = {};
+    hot = [];
+    low = [];
+    SITES.forEach(function (item) {
+      var g = item.group || '其它';
+      if (item.tier === 'hot') { hot.push(item); return; }
+      if (item.tier === 'low') { low.push(item); return; }
+      if (!byGroup[g]) {
+        byGroup[g] = [];
+        groups.push(g);
+      }
+      byGroup[g].push(item);
+    });
+  }
+
+  function makeTile(item, extraClass) {
+    var tile = document.createElement('div');
+    tile.className = 'tile' + (extraClass ? ' ' + extraClass : '');
+    tile.setAttribute('role', 'link');
+    tile.setAttribute('tabindex', '0');
+    tile.title = item.url || '';
+    tile.addEventListener('click', function () {
+      if (item.url) window.open(item.url, '_blank');
+    });
+    tile.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        if (item.url) window.open(item.url, '_blank');
+      }
+    });
+    var nm = document.createElement('div');
+    nm.className = 'name';
+    nm.textContent = item.name || '';
+    var nt = document.createElement('div');
+    nt.className = 'note';
+    nt.textContent = cleanNotes(item.notes);
+    tile.appendChild(nm);
+    tile.appendChild(nt);
+    return tile;
+  }
+
+  function makeSection(titleText, items, cls) {
+    var section = document.createElement('section');
+    section.className = 'group' + (cls ? ' ' + cls : '');
+    var title = document.createElement('div');
+    title.className = 'group-title';
+    var name = document.createElement('span');
+    name.textContent = titleText;
+    var count = document.createElement('span');
+    count.className = 'count';
+    count.textContent = items.length + ' 项';
+    title.appendChild(name);
+    title.appendChild(count);
+    var grid = document.createElement('div');
+    grid.className = 'grid';
+    items.forEach(function (item) { grid.appendChild(makeTile(item, cls === 'hot' ? 'hot-tile' : '')); });
+    section.appendChild(title);
+    section.appendChild(grid);
+    return section;
+  }
+
+  function render(query) {
+    board.innerHTML = '';
+    var q = (query || '').trim().toLowerCase();
+    var hit = 0;
+    var hotHits = q ? hot.filter(function (i) { return match(i, q); }) : hot;
+    var lowHits = q ? low.filter(function (i) { return match(i, q); }) : low;
+    if (hotHits.length) board.appendChild(makeSection('★ 常用', hotHits, 'hot'));
+    if (q) {
+      groups.forEach(function (g) {
+        var items = byGroup[g].filter(function (i) { return match(i, q); });
+        if (items.length) board.appendChild(makeSection(g, items));
+      });
+    } else {
+      groups.forEach(function (g) { board.appendChild(makeSection(g, byGroup[g])); });
+    }
+    var hit = hotHits.length + lowHits.length +
+      groups.reduce(function (acc, g) {
+        var items = q ? byGroup[g].filter(function (i) { return match(i, q); }) : byGroup[g];
+        return acc + items.length;
+      }, 0);
+
+    // low box: collapsed when idle; expands on search hits; hidden entirely if no hits
+    if (lowHits.length) {
+      var lowBox = document.createElement('details');
+      lowBox.className = 'lowbox';
+      lowBox.open = !!q;
+      var sum = document.createElement('summary');
+      sum.textContent = '更多低频入口（' + lowHits.length + '）— 密码复位/应急/条件性使用，平时折叠';
+      lowBox.appendChild(sum);
+      var lowGrid = document.createElement('div');
+      lowGrid.className = 'grid';
+      lowHits.forEach(function (item) { lowGrid.appendChild(makeTile(item)); });
+      lowBox.appendChild(lowGrid);
+      board.appendChild(lowBox);
+    }
+
+    if (q) {
+      stats.textContent = '搜索“' + query.trim() + '”：命中 ' + hit + ' 个入口（常用 ' + hotHits.length + ' · 折叠 ' + lowHits.length + '）';
+    } else {
+      stats.textContent = '共 ' + SITES.length + ' 个入口 · ★常用 ' + hot.length + ' · 折叠低频 ' + low.length + ' · ' + groups.length + ' 个分组';
+    }
+    emptyBox.hidden = hit !== 0;
+    board.hidden = hit === 0;
+  }
+
+  input.addEventListener('input', function () {
+    render(input.value);
+  });
+
+  buildIndex();
+  render('');
+})();
+</script>
+</body>
+</html>
